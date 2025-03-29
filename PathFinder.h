@@ -10,6 +10,8 @@ using namespace std;
 vector<int> getPath(Graph<Location> *graph, const int &source, const int &dest);
 
 // Calcula o menor caminho entre dois nós no grafo
-void shortestPath(Graph<Location> *graph, const int &source, const int &dest);
+void shortestPath(Graph<Location> *graph, const int &source);
+
+vector<pair<int,int>> shortestPathWalking(Graph<Location> *graph, const int &dest, const int &source, const int &max_walking);
 
 #endif //PATHFINDER_H

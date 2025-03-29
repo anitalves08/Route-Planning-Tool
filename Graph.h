@@ -45,7 +45,7 @@ public:
     void setIndegree(unsigned int indegree);
     void setDist(double dist);
     void setPath(Edge<T> *path);
-    Edge<T> * addEdge(Vertex<T> *dest, double w);
+    Edge<T> * addEdge(Vertex<T> *dest, double d,double w);
     bool removeEdge(T in);
     void removeOutgoingEdges();
 
@@ -77,10 +77,11 @@ protected:
 template <class T>
 class Edge {
 public:
-    Edge(Vertex<T> *orig, Vertex<T> *dest, double w);
+    Edge(Vertex<T> *orig, Vertex<T> *dest, double d,double w);
 
     Vertex<T> * getDest() const;
     double getWeight() const;
+    double getWalking() const;
     bool isSelected() const;
     Vertex<T> * getOrig() const;
     Edge<T> *getReverse() const;
@@ -91,8 +92,8 @@ public:
     void setFlow(double flow);
 protected:
     Vertex<T> * dest; // destination vertex
-    double weight; // edge weight, can also be used for capacity
-
+    double weight;// edge weight, can also be used for capacity
+    double walking;
     // auxiliary fields
     bool selected = false;
 
@@ -125,9 +126,9 @@ public:
      * destination vertices and the edge weight (w).
      * Returns true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const T &sourc, const T &dest, double w);
+    bool addEdge(const T &sourc, const T &dest, double d, double w);
     bool removeEdge(const T &source, const T &dest);
-    bool addBidirectionalEdge(const T &sourc, const T &dest, double w);
+    bool addBidirectionalEdge(const T &sourc, const T &dest, double d, double w);
 
     int getNumVertex() const;
 
@@ -163,10 +164,10 @@ Vertex<T>::Vertex(T in): info(in) {}
  * with a given destination vertex (d) and edge weight (w).
  */
 template <class T>
-Edge<T> * Vertex<T>::addEdge(Vertex<T> *d, double w) {
-    auto newEdge = new Edge<T>(this, d, w);
+Edge<T> * Vertex<T>::addEdge(Vertex<T> *v, double d,double w) {
+    auto newEdge = new Edge<T>(this, v, d, w);
     adj.push_back(newEdge);
-    d->incoming.push_back(newEdge);
+    v->incoming.push_back(newEdge);
     return newEdge;
 }
 
@@ -321,7 +322,7 @@ void Vertex<T>::deleteEdge(Edge<T> *edge) {
 /********************** Edge  ****************************/
 
 template <class T>
-Edge<T>::Edge(Vertex<T> *orig, Vertex<T> *dest, double w): orig(orig), dest(dest), weight(w) {}
+Edge<T>::Edge(Vertex<T> *orig, Vertex<T> *dest, double d,double w): orig(orig), dest(dest), weight(d), walking(w) {}
 
 template <class T>
 Vertex<T> * Edge<T>::getDest() const {
@@ -332,6 +333,13 @@ template <class T>
 double Edge<T>::getWeight() const {
     return this->weight;
 }
+
+//adicionado por grupo
+template <class T>
+double Edge<T>::getWalking() const {
+    return this->walking;
+}
+
 
 template <class T>
 Vertex<T> * Edge<T>::getOrig() const {
@@ -367,6 +375,9 @@ template <class T>
 void Edge<T>::setFlow(double flow) {
     this->flow = flow;
 }
+
+
+
 
 /********************** Graph  ****************************/
 
@@ -441,12 +452,12 @@ bool Graph<T>::removeVertex(const T &in) {
  * Returns true if successful, and false if the source or destination vertex does not exist.
  */
 template <class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
+bool Graph<T>::addEdge(const T &sourc, const T &dest, double d, double w) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
         return false;
-    v1->addEdge(v2, w);
+    v1->addEdge(v2, d, w);
     return true;
 }
 
@@ -465,13 +476,13 @@ bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
 }
 
 template <class T>
-bool Graph<T>::addBidirectionalEdge(const T &sourc, const T &dest, double w) {
+bool Graph<T>::addBidirectionalEdge(const T &sourc, const T &dest, double d,double w) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
         return false;
-    auto e1 = v1->addEdge(v2, w);
-    auto e2 = v2->addEdge(v1, w);
+    auto e1 = v1->addEdge(v2, d, w);
+    auto e2 = v2->addEdge(v1, d, w);
     e1->setReverse(e2);
     e2->setReverse(e1);
     return true;

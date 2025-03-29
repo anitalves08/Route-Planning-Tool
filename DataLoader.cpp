@@ -33,12 +33,14 @@ void loadGraphData(Graph<Location> &graph) {
 
   while (getline(file2, line)) {
     stringstream ss(line);
-    string code1, code2, driving_time;
+    string code1, code2, driving_time,walking_time;
 
     getline(ss, code1, ',');
     getline(ss, code2, ',');
     getline(ss, driving_time, ',');
-    int w_driving;
+    getline(ss, walking_time, '\0');
+    int w_driving,w_walking;
+    w_walking = stoi(walking_time);
 
     if (driving_time == "X") {
       w_driving = INT_MAX;
@@ -55,6 +57,6 @@ void loadGraphData(Graph<Location> &graph) {
       if (location1.code == code1 && location2.code == code2) break;
 
     }
-    graph.addBidirectionalEdge(location1,location2,w_driving);
+    graph.addBidirectionalEdge(location1,location2,w_driving,w_walking);
   }
 }

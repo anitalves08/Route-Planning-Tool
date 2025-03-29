@@ -27,7 +27,7 @@ vector<int> getPath(Graph<Location> *graph, const int &source, const int &dest){
     return res;
 }
 
-void shortestPath(Graph<Location> *graph, const int &source, const int &dest) {
+void shortestPath(Graph<Location> *graph, const int &source) {
     MutablePriorityQueue<Vertex<Location>> q;
     for (Vertex<Location> *v : graph->getVertexSet()) {
         v->setDist(INT_MAX);
@@ -58,4 +58,45 @@ void shortestPath(Graph<Location> *graph, const int &source, const int &dest) {
             }
         }
     }
+}
+
+vector<pair<int,int>> shortestPathWalking(Graph<Location> *graph, const int &dest, const int &source, const int &max_walking) {
+    MutablePriorityQueue<Vertex<Location>> q;
+    for (Vertex<Location> *v : graph->getVertexSet()) {
+        v->setDist(INT_MAX);
+        v->setPath(nullptr);
+        v->setVisited(false);
+    }
+    Vertex<Location> *d = graph->getVertexSet()[dest-1];
+    d->setDist(0);
+    q.insert(d);
+    vector<pair<int,int>> parking_nodes;
+    d->setVisited(true);
+    while (!q.empty()) {
+        Vertex<Location> *u = q.extractMin();
+        for (Edge<Location> *e : u->getAdj()) {
+            Vertex<Location> *v = e->getDest();
+            if (v->isProcessing() || e->isSelected() || v->getInfo().id == source) continue;
+            if (v->getDist()> u->getDist() + e->getWalking()) {
+                v->setDist(u->getDist() + e->getWalking());
+                v->setPath(e);
+                if (!v->isVisited()) {
+                    if (v->getDist() <= max_walking) {
+                        q.insert(v);
+                        v->setVisited(true);
+                        if (v->getInfo().parking == 1) {
+                            parking_nodes.push_back(make_pair(v->getInfo().id,0));
+                        }
+                    }
+                }
+                else {
+                    q.decreaseKey(v);
+                }
+            }
+        }
+    }
+    for (int j=0 ; j<parking_nodes.size(); j++) {
+        parking_nodes[j].second = graph->getVertexSet()[parking_nodes[j].first-1]->getDist();
+    }
+    return parking_nodes;
 }

@@ -1,10 +1,10 @@
 Location,Id,Code,Parking
 Aguiar,1,A,0
 Bruno,2,B,0
-Castanheiro,3,C,0
+Castanheiro,3,C,1
 Gustavo,4,G,0
 Dunas,5,D,0
 Elefante,6,E,0
-Fila,7,F,0
-Horta,8,H,0
+Fila,7,F,1
+Horta,8,H,1
 Iguana,9,I,0
