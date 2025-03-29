@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+#include "MutablePriorityQueue.h"
+#include "Graph.h"
+#include "Location.h"
+
+vector<int> getPath(Graph<Location> *graph, const int &source, const int &dest){
+    vector<int> res;
+    Vertex<Location> *d= graph->getVertexSet()[dest-1];
+    if (d->getDist()==INT_MAX || d->getPath()==nullptr){
+        return res;
+    }
+    while(d!=nullptr){
+        if (d->getInfo().id != source && d->getInfo().id != dest) {
+            d->setProcessing(true);
+        }
+        res.push_back(d->getInfo().id);
+        Edge<Location> *path=d->getPath();
+        if(path==nullptr){ break;}
+        path->setSelected(true);
+        d=path->getOrig();
+    }
+    res.push_back(graph->getVertexSet()[dest-1]->getDist());
+    return res;
+}
+
+void shortestPath(Graph<Location> *graph, const int &source, const int &dest) {
+    MutablePriorityQueue<Vertex<Location>> q;
+    for (Vertex<Location> *v : graph->getVertexSet()) {
+        v->setDist(INT_MAX);
+        v->setPath(nullptr);
+        v->setVisited(false);
+    }
+
+    Vertex<Location> *s = graph->getVertexSet()[source-1];
+    //define o ponto de partida source com distancia 0
+    s->setDist(0);
+    s->setVisited(true);
+    q.insert(s);
+    while (!q.empty()) {
+        Vertex<Location> *u = q.extractMin();
+        for (Edge<Location> *e : u->getAdj()) {
+            Vertex<Location> *v = e->getDest();
+            if (v->isProcessing() || e->isSelected()) continue;
+            if (v->getDist()> u->getDist() + e->getWeight()) {
+                v->setDist(u->getDist() + e->getWeight());
+                v->setPath(e);
+                if (!v->isVisited()) { //se ele ainda nao tiver sido visitado é porque não está na priorityqueue
+                    v->setVisited(true);
+                    q.insert(v);
+                }
+                else {
+                    q.decreaseKey(v);
+                }
+            }
+        }
+    }
+}
