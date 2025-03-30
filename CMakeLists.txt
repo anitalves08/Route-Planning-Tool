@@ -12,4 +12,6 @@ add_executable(Route_Planning_Tool_v2 main.cpp
         Location.h
         Graph.h
         MutablePriorityQueue.h
+        commandLineMenu.cpp
+        commandLineMenu.h
 )
