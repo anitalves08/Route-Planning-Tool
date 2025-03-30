@@ -1,9 +1,7 @@
 # ninja log v6
 42	3324	7650608834079582	CMakeFiles/Route_Planning_Tool_v2.dir/PathFinder.cpp.obj	6c61ec3552f52ba4
 18	2835	7650608833848137	CMakeFiles/Route_Planning_Tool_v2.dir/main.cpp.obj	e47c64a701fc100e
-4	580	7650609618732650	build.ninja	88999ee3c4b0d433
-2203	2586	7650574606785080	Route_Planning_Tool_v2.exe	244f48dcbc6e0d54
-31	3211	7650608833977251	CMakeFiles/Route_Planning_Tool_v2.dir/DataLoader.cpp.obj	9fc88f35bd997855
-8	430	7650609618732650	build.ninja	88999ee3c4b0d433
+8	430	7650630272111652	build.ninja	88999ee3c4b0d433
 36	2214	7650609620724685	CMakeFiles/Route_Planning_Tool_v2.dir/commandLineMenu.cpp.obj	1f0fad08e09e7279
 2215	2617	7650609642521219	Route_Planning_Tool_v2.exe	d8c68fd84b26137
+31	3211	7650608833977251	CMakeFiles/Route_Planning_Tool_v2.dir/DataLoader.cpp.obj	9fc88f35bd997855

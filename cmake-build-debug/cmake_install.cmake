@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Lenovo/CLionProjects/untitled
+# Install script for directory: C:/Users/carol/CLionProjects/Route-Planning-Tool-v2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2024.3.3/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/carol/OneDrive/Ambiente de Trabalho/DA/CLion 2024.3.3/bin/mingw/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -52,6 +52,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "C:/Users/Lenovo/CLionProjects/untitled/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/carol/CLionProjects/Route-Planning-Tool-v2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
