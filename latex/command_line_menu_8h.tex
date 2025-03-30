@@ -1,0 +1,184 @@
+\doxysection{command\+Line\+Menu.\+h File Reference}
+\hypertarget{command_line_menu_8h}{}\label{command_line_menu_8h}\index{commandLineMenu.h@{commandLineMenu.h}}
+
+
+Declaração das funções para interação via linha de comando.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+{\ttfamily \#include "{}Location.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{command_line_menu_8h_a623a096691b5208e2149cfe429b9a03c}{get\+Location}} (string \&source, string \&destination)
+\begin{DoxyCompactList}\small\item\em Solicita ao usuário as localizações de origem e destino. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{command_line_menu_8h_a054a8e183107d71115de3db7a757dcf0}{processed\+Nodes}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph, vector$<$ int $>$ avoid\+Nodes)
+\begin{DoxyCompactList}\small\item\em Processa os vértices a serem evitados durante o planejamento da rota. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{command_line_menu_8h_a42b9a63bca7ee5dad016eea2bcf15b65}{selected\+Edges}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph, vector$<$ pair$<$ int, int $>$ $>$ avoid\+Edges)
+\begin{DoxyCompactList}\small\item\em Processa as arestas a serem evitadas durante o planejamento da rota. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{command_line_menu_8h_a8242b80b91e3d5b72ed3b0e699ac0228}{get\+\_\+avoiding\+\_\+nodes}} ()
+\begin{DoxyCompactList}\small\item\em Solicita ao usuário os vértices que ele deseja evitar durante o planejamento da rota. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{command_line_menu_8h_a01582aa1da1227b46305450eddc19fd1}{get\+\_\+avoiding\+\_\+edges}} ()
+\begin{DoxyCompactList}\small\item\em Solicita ao usuário as arestas que ele deseja evitar durante o planejamento da rota. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{command_line_menu_8h_a39a6bc8ab40dd2cf27aa83aa60f0b2ef}{get\+\_\+included\+\_\+node}} ()
+\begin{DoxyCompactList}\small\item\em Solicita ao usuário um vértice para passar durante o planejamento da rota. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{command_line_menu_8h_a75aabba8b7419e014599aaea3192536c}{command\+\_\+line}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph)
+\begin{DoxyCompactList}\small\item\em Exibe o menu de opções e permite ao usuário interagir com o sistema para selecionar um tipo de planejamento de rota. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declaração das funções para interação via linha de comando. 
+
+Este arquivo contém as funções que permitem ao usuário interagir com o programa por meio de um menu de opções, onde é possível realizar diferentes tipos de planejamento de rotas no grafo, como planejamento de rota independente, restrita e ambientalmente amigável.
+
+As funções principais permitem que o usuário\+:
+\begin{DoxyItemize}
+\item Selecione o modo de operação (interativo ou em lote).
+\item Informe as localizações de origem e destino.
+\item Escolha quais vértices e arestas evitar durante o planejamento de rotas.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+As funções descritas neste arquivo são usadas para interagir com o usuário e processar as entradas fornecidas. 
+\end{DoxyNote}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{command_line_menu_8h_a75aabba8b7419e014599aaea3192536c}\index{commandLineMenu.h@{commandLineMenu.h}!command\_line@{command\_line}}
+\index{command\_line@{command\_line}!commandLineMenu.h@{commandLineMenu.h}}
+\doxysubsubsection{\texorpdfstring{command\_line()}{command\_line()}}
+{\footnotesize\ttfamily \label{command_line_menu_8h_a75aabba8b7419e014599aaea3192536c} 
+void command\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{}\end{DoxyParamCaption})}
+
+
+
+Exibe o menu de opções e permite ao usuário interagir com o sistema para selecionar um tipo de planejamento de rota. 
+
+Esta função oferece ao usuário um menu interativo com as opções de planejamento de rotas, permitindo selecionar entre diferentes modos, como o planejamento de rotas independentes, rotas restritas e rotas ambientalmente amigáveis. Após a seleção, o usuário fornece as informações necessárias para calcular a rota, como as localizações de origem e destino.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo contendo as localizações e distâncias. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{command_line_menu_8h_a01582aa1da1227b46305450eddc19fd1}\index{commandLineMenu.h@{commandLineMenu.h}!get\_avoiding\_edges@{get\_avoiding\_edges}}
+\index{get\_avoiding\_edges@{get\_avoiding\_edges}!commandLineMenu.h@{commandLineMenu.h}}
+\doxysubsubsection{\texorpdfstring{get\_avoiding\_edges()}{get\_avoiding\_edges()}}
+{\footnotesize\ttfamily \label{command_line_menu_8h_a01582aa1da1227b46305450eddc19fd1} 
+vector$<$ pair$<$ int, int $>$ $>$ get\+\_\+avoiding\+\_\+edges (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Solicita ao usuário as arestas que ele deseja evitar durante o planejamento da rota. 
+
+Exibe uma mensagem ao usuário para que ele forneça uma lista de arestas a serem evitadas. O usuário pode digitar uma lista de arestas no formato "{}(vértice1, vértice2)"{} separadas por vírgula ou pressionar Enter para não evitar nenhuma aresta.
+
+\begin{DoxyReturn}{Returns}
+Um vetor de pares de inteiros representando as arestas a serem evitadas, onde cada par é composto por os IDs dos vértices conectados pela aresta.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A complexidade temporal dessa função é O(m), onde m é o número de arestas fornecidas pelo usuário. A função processa a entrada do usuário e converte as strings em inteiros. 
+\end{DoxyNote}
+\Hypertarget{command_line_menu_8h_a8242b80b91e3d5b72ed3b0e699ac0228}\index{commandLineMenu.h@{commandLineMenu.h}!get\_avoiding\_nodes@{get\_avoiding\_nodes}}
+\index{get\_avoiding\_nodes@{get\_avoiding\_nodes}!commandLineMenu.h@{commandLineMenu.h}}
+\doxysubsubsection{\texorpdfstring{get\_avoiding\_nodes()}{get\_avoiding\_nodes()}}
+{\footnotesize\ttfamily \label{command_line_menu_8h_a8242b80b91e3d5b72ed3b0e699ac0228} 
+vector$<$ int $>$ get\+\_\+avoiding\+\_\+nodes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Solicita ao usuário os vértices que ele deseja evitar durante o planejamento da rota. 
+
+Exibe uma mensagem ao usuário para que ele forneça uma lista de vértices a serem evitados. O usuário pode digitar uma lista de IDs de vértices separados por vírgula ou pressionar Enter para não evitar nenhum.
+
+\begin{DoxyReturn}{Returns}
+Um vetor contendo os IDs dos vértices a serem evitados.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A complexidade temporal desta função é O(n), onde n é o número de vértices fornecidos pelo usuário, pois a função simplesmente processa a entrada do usuário. 
+\end{DoxyNote}
+\Hypertarget{command_line_menu_8h_a39a6bc8ab40dd2cf27aa83aa60f0b2ef}\index{commandLineMenu.h@{commandLineMenu.h}!get\_included\_node@{get\_included\_node}}
+\index{get\_included\_node@{get\_included\_node}!commandLineMenu.h@{commandLineMenu.h}}
+\doxysubsubsection{\texorpdfstring{get\_included\_node()}{get\_included\_node()}}
+{\footnotesize\ttfamily \label{command_line_menu_8h_a39a6bc8ab40dd2cf27aa83aa60f0b2ef} 
+int get\+\_\+included\+\_\+node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Solicita ao usuário um vértice para passar durante o planejamento da rota. 
+
+Exibe uma mensagem ao usuário pedindo o ID de um vértice que ele deseja obrigatoriamente passar durante o planejamento da rota. Se o usuário não deseja passar por nenhum vértice, ele pode pressionar Enter.
+
+\begin{DoxyReturn}{Returns}
+O ID do vértice a ser incluído no caminho ou 0 caso o usuário não queira incluir nenhum vértice.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A complexidade temporal dessa função é O(1), pois é apenas uma interação simples com o usuário. 
+\end{DoxyNote}
+\Hypertarget{command_line_menu_8h_a623a096691b5208e2149cfe429b9a03c}\index{commandLineMenu.h@{commandLineMenu.h}!getLocation@{getLocation}}
+\index{getLocation@{getLocation}!commandLineMenu.h@{commandLineMenu.h}}
+\doxysubsubsection{\texorpdfstring{getLocation()}{getLocation()}}
+{\footnotesize\ttfamily \label{command_line_menu_8h_a623a096691b5208e2149cfe429b9a03c} 
+void get\+Location (\begin{DoxyParamCaption}\item[{string \&}]{source}{, }\item[{string \&}]{destination}{}\end{DoxyParamCaption})}
+
+
+
+Solicita ao usuário as localizações de origem e destino. 
+
+Esta função exibe mensagens ao usuário, pedindo as localizações de origem e destino para o planejamento de rotas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & A string que armazenará a localização de origem fornecida pelo usuário. \\
+\hline
+{\em destination} & A string que armazenará a localização de destino fornecida pelo usuário.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal desta função é O(1), pois a operação é apenas uma interação simples com o usuário. 
+\end{DoxyNote}
+\Hypertarget{command_line_menu_8h_a054a8e183107d71115de3db7a757dcf0}\index{commandLineMenu.h@{commandLineMenu.h}!processedNodes@{processedNodes}}
+\index{processedNodes@{processedNodes}!commandLineMenu.h@{commandLineMenu.h}}
+\doxysubsubsection{\texorpdfstring{processedNodes()}{processedNodes()}}
+{\footnotesize\ttfamily \label{command_line_menu_8h_a054a8e183107d71115de3db7a757dcf0} 
+void processed\+Nodes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{vector$<$ int $>$}]{avoid\+Nodes}{}\end{DoxyParamCaption})}
+
+
+
+Processa os vértices a serem evitados durante o planejamento da rota. 
+
+Solicita ao usuário quais vértices ele deseja evitar no grafo. O usuário fornece uma lista de IDs de vértices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo onde os vértices serão processados. \\
+\hline
+{\em avoid\+Nodes} & Um vetor contendo os IDs dos vértices a serem evitados.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal dessa função é O(n), onde n é o número de vértices a serem evitados, pois a função apenas marca os vértices no grafo. 
+\end{DoxyNote}
+\Hypertarget{command_line_menu_8h_a42b9a63bca7ee5dad016eea2bcf15b65}\index{commandLineMenu.h@{commandLineMenu.h}!selectedEdges@{selectedEdges}}
+\index{selectedEdges@{selectedEdges}!commandLineMenu.h@{commandLineMenu.h}}
+\doxysubsubsection{\texorpdfstring{selectedEdges()}{selectedEdges()}}
+{\footnotesize\ttfamily \label{command_line_menu_8h_a42b9a63bca7ee5dad016eea2bcf15b65} 
+void selected\+Edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{vector$<$ pair$<$ int, int $>$ $>$}]{avoid\+Edges}{}\end{DoxyParamCaption})}
+
+
+
+Processa as arestas a serem evitadas durante o planejamento da rota. 
+
+Solicita ao usuário as arestas que ele deseja evitar no grafo. O usuário fornece uma lista de pares de vértices representando as arestas a serem evitadas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo onde as arestas serão processadas. \\
+\hline
+{\em avoid\+Edges} & Um vetor de pares contendo os IDs dos vértices das arestas a serem evitadas.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal dessa função é O(e), onde e é o número de arestas a serem evitadas. A função percorre as arestas do grafo para marcar as arestas selecionadas. 
+\end{DoxyNote}

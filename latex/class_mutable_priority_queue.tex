@@ -1,0 +1,126 @@
+\doxysection{Mutable\+Priority\+Queue\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_mutable_priority_queue}{}\label{class_mutable_priority_queue}\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+
+
+Fila de prioridade mutável baseada em heap binário.  
+
+
+
+
+{\ttfamily \#include $<$Mutable\+Priority\+Queue.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mutable_priority_queue_aba8ebedcbe659f2680bac229cfaca526}\label{class_mutable_priority_queue_aba8ebedcbe659f2680bac229cfaca526} 
+{\bfseries Mutable\+Priority\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Constrói uma nova fila de prioridade vazia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mutable_priority_queue_a058fc182052af82e10cc3719e448b62d}{insert}} (T \texorpdfstring{$\ast$}{*}x)
+\begin{DoxyCompactList}\small\item\em Insere um elemento na fila de prioridade. \end{DoxyCompactList}\item 
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_mutable_priority_queue_a3880874d7364279ac0d6d31302b28853}{extract\+Min}} ()
+\begin{DoxyCompactList}\small\item\em Extrai o elemento com a menor chave da fila de prioridade. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mutable_priority_queue_a0878839cc1d2dba2b8ab2e589ecc6405}{decrease\+Key}} (T \texorpdfstring{$\ast$}{*}x)
+\begin{DoxyCompactList}\small\item\em Diminui a chave de um elemento na fila de prioridade. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mutable_priority_queue_a2edbb1f4a6fa3ff735700dfcebebe8d4}{empty}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se a fila de prioridade está vazia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Mutable\+Priority\+Queue$<$ T $>$}
+Fila de prioridade mutável baseada em heap binário. 
+
+class T must have\+: (i) accessible field int queue\+Index; (ii) operator\texorpdfstring{$<$}{<} defined.
+
+Esta classe fornece as operações necessárias para o algoritmo de Dijkstra, permitindo a inserção, extração do mínimo e diminuição da chave de elementos na fila de prioridade.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Tipo de dado armazenado na fila de prioridade.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal das operações são as seguintes\+:
+\begin{DoxyItemize}
+\item {\ttfamily insert}\+: O(log n) onde n é o número de elementos na fila.
+\item {\ttfamily extract\+Min}\+: O(log n) onde n é o número de elementos na fila.
+\item {\ttfamily decrease\+Key}\+: O(log n) onde n é o número de elementos na fila. 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mutable_priority_queue_a0878839cc1d2dba2b8ab2e589ecc6405}\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!decreaseKey@{decreaseKey}}
+\index{decreaseKey@{decreaseKey}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{decreaseKey()}{decreaseKey()}}
+{\footnotesize\ttfamily \label{class_mutable_priority_queue_a0878839cc1d2dba2b8ab2e589ecc6405} 
+template$<$class T$>$ \\
+void \mbox{\hyperlink{class_mutable_priority_queue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::decrease\+Key (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Diminui a chave de um elemento na fila de prioridade. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & O ponteiro para o elemento a ter a chave diminuída.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal é O(log n) onde n é o número de elementos na fila. 
+\end{DoxyNote}
+\Hypertarget{class_mutable_priority_queue_a2edbb1f4a6fa3ff735700dfcebebe8d4}\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!empty@{empty}}
+\index{empty@{empty}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily \label{class_mutable_priority_queue_a2edbb1f4a6fa3ff735700dfcebebe8d4} 
+template$<$class T$>$ \\
+bool \mbox{\hyperlink{class_mutable_priority_queue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se a fila de prioridade está vazia. 
+
+\begin{DoxyReturn}{Returns}
+Retorna verdadeiro se a fila estiver vazia, falso caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{class_mutable_priority_queue_a3880874d7364279ac0d6d31302b28853}\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!extractMin@{extractMin}}
+\index{extractMin@{extractMin}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{extractMin()}{extractMin()}}
+{\footnotesize\ttfamily \label{class_mutable_priority_queue_a3880874d7364279ac0d6d31302b28853} 
+template$<$class T$>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_mutable_priority_queue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::extract\+Min (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Extrai o elemento com a menor chave da fila de prioridade. 
+
+\begin{DoxyReturn}{Returns}
+O ponteiro para o elemento extraído.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A complexidade temporal é O(log n) onde n é o número de elementos na fila. 
+\end{DoxyNote}
+\Hypertarget{class_mutable_priority_queue_a058fc182052af82e10cc3719e448b62d}\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{class_mutable_priority_queue_a058fc182052af82e10cc3719e448b62d} 
+template$<$class T$>$ \\
+void \mbox{\hyperlink{class_mutable_priority_queue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Insere um elemento na fila de prioridade. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & O ponteiro para o elemento a ser inserido.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal é O(log n) onde n é o número de elementos na fila. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_mutable_priority_queue_8h}{Mutable\+Priority\+Queue.\+h}}\end{DoxyCompactItemize}

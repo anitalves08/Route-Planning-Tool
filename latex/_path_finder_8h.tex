@@ -1,0 +1,162 @@
+\doxysection{Path\+Finder.\+h File Reference}
+\hypertarget{_path_finder_8h}{}\label{_path_finder_8h}\index{PathFinder.h@{PathFinder.h}}
+
+
+Declaração das funções de planejamento de rotas.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}Location.\+h"{}}\newline
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{_path_finder_8h_acf9a9bb36505568d5cdc82ee8ff5e842}{get\+Path}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph, const int \&source, const int \&dest)
+\begin{DoxyCompactList}\small\item\em Obtém o caminho mais curto entre o nó de origem e o nó de destino no grafo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_path_finder_8h_a26f7531a26fb7f66433e2fb30812a694}{shortest\+Path}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph, const int \&source)
+\begin{DoxyCompactList}\small\item\em Calcula o caminho mais curto entre um nó de origem e um nó de destino no grafo. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{_path_finder_8h_acdb7a23fa89c9f63937ad7ad5f6b7db8}{shortest\+Path\+Walking}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph, const int \&dest, const int \&source, const int \&max\+\_\+walking)
+\begin{DoxyCompactList}\small\item\em Obtém o caminho mais curto para pedestres entre o nó de origem e o nó de destino. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_path_finder_8h_a86accbc8e368769422559066c08dbdbc}{best\+Path}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph, vector$<$ pair$<$ int, int $>$ $>$ res, int \&min\+\_\+time, int \&index\+\_\+park)
+\begin{DoxyCompactList}\small\item\em Processa a melhor alternativa de caminho, levando em consideração o tempo de caminhada. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{_path_finder_8h_a4d2e94e30a881a92bd95839c415ddeb0}{alternative\+Shortest\+Path\+Walking}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}graph, const int \&dest, const int \&source, const int \&max\+\_\+walking)
+\begin{DoxyCompactList}\small\item\em Busca as alternativas de caminho para pedestres com base no tempo máximo de caminhada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declaração das funções de planejamento de rotas. 
+
+Contém as funções necessárias para calcular o caminho mais curto e os caminhos a pé, além de determinar as melhores alternativas para o planejamento de rotas. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_path_finder_8h_a4d2e94e30a881a92bd95839c415ddeb0}\index{PathFinder.h@{PathFinder.h}!alternativeShortestPathWalking@{alternativeShortestPathWalking}}
+\index{alternativeShortestPathWalking@{alternativeShortestPathWalking}!PathFinder.h@{PathFinder.h}}
+\doxysubsubsection{\texorpdfstring{alternativeShortestPathWalking()}{alternativeShortestPathWalking()}}
+{\footnotesize\ttfamily \label{_path_finder_8h_a4d2e94e30a881a92bd95839c415ddeb0} 
+vector$<$ pair$<$ int, int $>$ $>$ alternative\+Shortest\+Path\+Walking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{const int \&}]{dest}{, }\item[{const int \&}]{source}{, }\item[{const int \&}]{max\+\_\+walking}{}\end{DoxyParamCaption})}
+
+
+
+Busca as alternativas de caminho para pedestres com base no tempo máximo de caminhada. 
+
+Este algoritmo usa o algoritmo de Dijkstra para encontrar alternativas de caminhos a pé até pontos de estacionamento dentro de um limite de tempo de caminhada especificado. Se o caminho a pé até o ponto de estacionamento ultrapassar o tempo máximo de caminhada permitido, ele é descartado.
+
+A função realiza a busca de todas as alternativas possíveis de rotas a pé, considerando a distância até os pontos de estacionamento, e retorna aquelas que atendem ao critério de tempo máximo de caminhada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo contendo os vértices e as arestas. \\
+\hline
+{\em dest} & O índice do vértice de destino. \\
+\hline
+{\em source} & O índice do vértice de origem. \\
+\hline
+{\em max\+\_\+walking} & O tempo máximo de caminhada permitido (em unidades de tempo, como minutos).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um vetor de pares de inteiros, onde cada par representa um nó de estacionamento e o tempo de caminhada até ele, dentro do limite do tempo máximo de caminhada permitido.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A complexidade temporal deste algoritmo é O(\+E log V), onde E é o número de arestas e V é o número de vértices no grafo. A complexidade se deve à execução do algoritmo de Dijkstra para calcular os caminhos mais curtos e à necessidade de processar cada aresta uma vez durante a busca de alternativas. 
+\end{DoxyNote}
+\Hypertarget{_path_finder_8h_a86accbc8e368769422559066c08dbdbc}\index{PathFinder.h@{PathFinder.h}!bestPath@{bestPath}}
+\index{bestPath@{bestPath}!PathFinder.h@{PathFinder.h}}
+\doxysubsubsection{\texorpdfstring{bestPath()}{bestPath()}}
+{\footnotesize\ttfamily \label{_path_finder_8h_a86accbc8e368769422559066c08dbdbc} 
+void best\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{vector$<$ pair$<$ int, int $>$ $>$}]{res}{, }\item[{int \&}]{min\+\_\+time}{, }\item[{int \&}]{index\+\_\+park}{}\end{DoxyParamCaption})}
+
+
+
+Processa a melhor alternativa de caminho, levando em consideração o tempo de caminhada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo contendo os vértices e as arestas. \\
+\hline
+{\em res} & O vetor de resultados contendo os caminhos e tempos de caminhada. \\
+\hline
+{\em min\+\_\+time} & A variável que armazenará o menor tempo encontrado. \\
+\hline
+{\em index\+\_\+park} & O índice do estacionamento encontrado no caminho. \\
+\hline
+{\em walking\+\_\+time} & O tempo de caminhada específico para ser evitado.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal é O(n), onde n é o número de alternativas de caminhos. 
+\end{DoxyNote}
+\Hypertarget{_path_finder_8h_acf9a9bb36505568d5cdc82ee8ff5e842}\index{PathFinder.h@{PathFinder.h}!getPath@{getPath}}
+\index{getPath@{getPath}!PathFinder.h@{PathFinder.h}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \label{_path_finder_8h_acf9a9bb36505568d5cdc82ee8ff5e842} 
+vector$<$ int $>$ get\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{const int \&}]{source}{, }\item[{const int \&}]{dest}{}\end{DoxyParamCaption})}
+
+
+
+Obtém o caminho mais curto entre o nó de origem e o nó de destino no grafo. 
+
+A função recupera o caminho mais curto, se existir, a partir do nó de origem até o nó de destino após a execução de um algoritmo de busca, como o Dijkstra. Ela percorre os vértices a partir do nó de destino até o nó de origem utilizando os ponteiros de caminho ({\ttfamily path}) armazenados durante a execução do algoritmo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo contendo os vértices e as arestas. \\
+\hline
+{\em source} & O índice do nó de origem. \\
+\hline
+{\em dest} & O índice do nó de destino.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um vetor de inteiros contendo o caminho dos nós a serem percorridos, na ordem do destino até a origem.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A complexidade temporal desta função é O(\+V), onde V é o número de vértices no caminho, pois percorre os vértices a partir do destino até a origem utilizando os ponteiros de caminho. 
+\end{DoxyNote}
+\Hypertarget{_path_finder_8h_a26f7531a26fb7f66433e2fb30812a694}\index{PathFinder.h@{PathFinder.h}!shortestPath@{shortestPath}}
+\index{shortestPath@{shortestPath}!PathFinder.h@{PathFinder.h}}
+\doxysubsubsection{\texorpdfstring{shortestPath()}{shortestPath()}}
+{\footnotesize\ttfamily \label{_path_finder_8h_a26f7531a26fb7f66433e2fb30812a694} 
+void shortest\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{const int \&}]{source}{}\end{DoxyParamCaption})}
+
+
+
+Calcula o caminho mais curto entre um nó de origem e um nó de destino no grafo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo contendo os vértices e as arestas. \\
+\hline
+{\em source} & O índice do nó de origem.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A complexidade temporal deste algoritmo é O(\+E log V), onde E é o número de arestas e V é o número de vértices. 
+\end{DoxyNote}
+\Hypertarget{_path_finder_8h_acdb7a23fa89c9f63937ad7ad5f6b7db8}\index{PathFinder.h@{PathFinder.h}!shortestPathWalking@{shortestPathWalking}}
+\index{shortestPathWalking@{shortestPathWalking}!PathFinder.h@{PathFinder.h}}
+\doxysubsubsection{\texorpdfstring{shortestPathWalking()}{shortestPathWalking()}}
+{\footnotesize\ttfamily \label{_path_finder_8h_acdb7a23fa89c9f63937ad7ad5f6b7db8} 
+vector$<$ pair$<$ int, int $>$ $>$ shortest\+Path\+Walking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{const int \&}]{dest}{, }\item[{const int \&}]{source}{, }\item[{const int \&}]{max\+\_\+walking}{}\end{DoxyParamCaption})}
+
+
+
+Obtém o caminho mais curto para pedestres entre o nó de origem e o nó de destino. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo contendo os vértices e as arestas. \\
+\hline
+{\em dest} & O índice do nó de destino. \\
+\hline
+{\em source} & O índice do nó de origem. \\
+\hline
+{\em max\+\_\+walking} & O tempo máximo permitido para caminhada.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um vetor de pares de inteiros, representando os nós de estacionamento e seus respectivos tempos de caminhada.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A complexidade temporal deste algoritmo é O(\+E log V), onde E é o número de arestas e V é o número de vértices. 
+\end{DoxyNote}

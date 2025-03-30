@@ -1,0 +1,64 @@
+\doxysection{Location Struct Reference}
+\hypertarget{struct_location}{}\label{struct_location}\index{Location@{Location}}
+
+
+Representa uma localização no grafo.  
+
+
+
+
+{\ttfamily \#include $<$Location.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_location_a0c99c1e65cc6607121da4abdb4894b74}{operator==}} (const \mbox{\hyperlink{struct_location}{Location}} \&other) const
+\begin{DoxyCompactList}\small\item\em Operador de comparação entre duas localizações. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_location_a0ae46c7127ec349e484ed075c91ba258}\label{struct_location_a0ae46c7127ec349e484ed075c91ba258} 
+string {\bfseries name}
+\item 
+\Hypertarget{struct_location_ae9a0c3ce4a3ed146e2a70630dd8f07d0}\label{struct_location_ae9a0c3ce4a3ed146e2a70630dd8f07d0} 
+int {\bfseries id}
+\item 
+\Hypertarget{struct_location_a61d0d75d770cedb310772ab52a11fa1d}\label{struct_location_a61d0d75d770cedb310772ab52a11fa1d} 
+string {\bfseries code}
+\item 
+\Hypertarget{struct_location_a841953434b1c4133af4325a51685e16c}\label{struct_location_a841953434b1c4133af4325a51685e16c} 
+int {\bfseries parking}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa uma localização no grafo. 
+
+Cada objeto {\ttfamily \doxylink{struct_location}{Location}} contém informações sobre uma localização específica, como nome, id, código e a presença de estacionamento. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_location_a0c99c1e65cc6607121da4abdb4894b74}\index{Location@{Location}!operator==@{operator==}}
+\index{operator==@{operator==}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{struct_location_a0c99c1e65cc6607121da4abdb4894b74} 
+bool Location\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_location}{Location}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de comparação entre duas localizações. 
+
+Compara duas localizações com base no nome, código e id.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & A outra localização a ser comparada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna verdadeiro se as localizações forem iguais. 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_location_8h}{Location.\+h}}\end{DoxyCompactItemize}

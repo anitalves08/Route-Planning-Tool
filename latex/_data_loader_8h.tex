@@ -1,0 +1,39 @@
+\doxysection{Data\+Loader.\+h File Reference}
+\hypertarget{_data_loader_8h}{}\label{_data_loader_8h}\index{DataLoader.h@{DataLoader.h}}
+
+
+Declaração das funções para carregar dados do grafo a partir de arquivos CSV.  
+
+
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+{\ttfamily \#include "{}Location.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_data_loader_8h_aca63abc6b3214f3c83be07b803bb7951}{load\+Graph\+Data}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \&graph)
+\begin{DoxyCompactList}\small\item\em Carrega os dados do grafo a partir de arquivos CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declaração das funções para carregar dados do grafo a partir de arquivos CSV. 
+
+Contém a função {\ttfamily load\+Graph\+Data}, que carrega os dados dos arquivos CSV para construir o grafo com vértices e arestas representando as localizações e distâncias. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_data_loader_8h_aca63abc6b3214f3c83be07b803bb7951}\index{DataLoader.h@{DataLoader.h}!loadGraphData@{loadGraphData}}
+\index{loadGraphData@{loadGraphData}!DataLoader.h@{DataLoader.h}}
+\doxysubsubsection{\texorpdfstring{loadGraphData()}{loadGraphData()}}
+{\footnotesize\ttfamily \label{_data_loader_8h_aca63abc6b3214f3c83be07b803bb7951} 
+void load\+Graph\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{struct_location}{Location}} $>$ \&}]{graph}{}\end{DoxyParamCaption})}
+
+
+
+Carrega os dados do grafo a partir de arquivos CSV. 
+
+A função carrega as localizações e distâncias dos arquivos {\ttfamily my\+\_\+locations.\+csv} e {\ttfamily my\+\_\+distances.\+csv} e constrói o grafo correspondente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & O grafo onde os dados serão carregados. \\
+\hline
+\end{DoxyParams}

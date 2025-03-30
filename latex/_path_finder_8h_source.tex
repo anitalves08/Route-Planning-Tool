@@ -1,0 +1,28 @@
+\doxysection{Path\+Finder.\+h}
+\hypertarget{_path_finder_8h_source}{}\label{_path_finder_8h_source}\mbox{\hyperlink{_path_finder_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ PATHFINDER\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ PATHFINDER\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_location_8h}{Location.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_graph_8h}{Graph.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00035\ vector<int>\ \mbox{\hyperlink{_path_finder_8h_acf9a9bb36505568d5cdc82ee8ff5e842}{getPath}}(\mbox{\hyperlink{class_graph}{Graph<Location>}}\ *graph,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&source,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&dest);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_path_finder_8h_a26f7531a26fb7f66433e2fb30812a694}{shortestPath}}(\mbox{\hyperlink{class_graph}{Graph<Location>}}\ *graph,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&source);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00059\ vector<pair<int,int>>\ \mbox{\hyperlink{_path_finder_8h_acdb7a23fa89c9f63937ad7ad5f6b7db8}{shortestPathWalking}}(\mbox{\hyperlink{class_graph}{Graph<Location>}}\ *graph,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&dest,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&source,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&max\_walking);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_path_finder_8h_a86accbc8e368769422559066c08dbdbc}{bestPath}}(\mbox{\hyperlink{class_graph}{Graph<Location>}}\ *graph,\ vector<pair<int,int>>\ res,\ \textcolor{keywordtype}{int}\ \&min\_time,\ \textcolor{keywordtype}{int}\ \&index\_park);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00096\ vector<pair<int,int>>\ \mbox{\hyperlink{_path_finder_8h_a4d2e94e30a881a92bd95839c415ddeb0}{alternativeShortestPathWalking}}(\mbox{\hyperlink{class_graph}{Graph<Location>}}\ *graph,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&dest,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&source,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&max\_walking);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PATHFINDER\_H}}
+
+\end{DoxyCode}
