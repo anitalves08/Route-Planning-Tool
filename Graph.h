@@ -1,6 +1,11 @@
-// Original code by Gonçalo Leão
-// Updated by DA 2024/2025 Team
-
+ /**
+* @file Graph.h
+* @brief Declaração das classes e funções para manipulação de grafos.
+*
+* Contém a definição de classes para Vértices e Arestas, além da classe principal
+* Graph que representa um grafo. As funções são utilizadas para adicionar e remover vértices
+* e arestas, entre outras operações.
+*/
 #ifndef DA_TP_CLASSES_GRAPH
 #define DA_TP_CLASSES_GRAPH
 
@@ -18,6 +23,15 @@ class Edge;
 
 /************************* Vertex  **************************/
 
+/**
+ * @class Vertex
+ * @brief Representa um vértice em um grafo.
+ *
+ * Um vértice contém informações sobre o nó, como seu ID, lista de arestas adjacentes e outras propriedades
+ * auxiliares, como distâncias, estado de visitação e caminho.
+ *
+ * @tparam T Tipo de dado armazenado no vértice.
+ */
 template <class T>
 class Vertex {
 public:
@@ -74,6 +88,15 @@ protected:
 
 /********************** Edge  ****************************/
 
+/**
+ * @class Edge
+ * @brief Representa uma aresta em um grafo.
+ *
+ * A aresta contém informações sobre o peso da aresta, o destino e o nó de origem, além de outras
+ * propriedades auxiliares, como o fluxo.
+ *
+ * @tparam T Tipo de dado armazenado nas arestas.
+ */
 template <class T>
 class Edge {
 public:
@@ -106,6 +129,15 @@ protected:
 
 /********************** Graph  ****************************/
 
+/**
+ * @class Graph
+ * @brief Representa um grafo.
+ *
+ * A classe Graph contém um conjunto de vértices e oferece funções para manipulação do grafo,
+ * como adicionar e remover vértices e arestas.
+ *
+ * @tparam T Tipo de dado armazenado nos vértices do grafo.
+ */
 template <class T>
 class Graph {
 public:

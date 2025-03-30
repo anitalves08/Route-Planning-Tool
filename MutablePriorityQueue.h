@@ -1,9 +1,8 @@
-/*
- * MutablePriorityQueue.h
- * A simple implementation of mutable priority queues, required by Dijkstra algorithm.
+/**
+* @file MutablePriorityQueue.h
+ * @brief Implementação de uma fila de prioridade mutável usando heap binário, necessária para o algoritmo de Dijkstra.
  *
- * Created on: 17/03/2018
- *      Author: João Pascoal Faria
+ * @tparam T Tipo de dado armazenado na fila de prioridade. O tipo T deve implementar o operador '<' e ter o campo 'queueIndex'.
  */
 
 #ifndef DA_TP_CLASSES_MUTABLEPRIORITYQUEUE
@@ -12,20 +11,90 @@
 #include <vector>
 
 /**
- * class T must have: (i) accessible field int queueIndex; (ii) operator< defined.
- */
-
+  * class T must have: (i) accessible field int queueIndex; (ii) operator< defined.
+  */
+ /**
+  * @class MutablePriorityQueue
+  * @brief Fila de prioridade mutável baseada em heap binário.
+  *
+  * Esta classe fornece as operações necessárias para o algoritmo de Dijkstra,
+  * permitindo a inserção, extração do mínimo e diminuição da chave de elementos
+  * na fila de prioridade.
+  *
+  * @tparam T Tipo de dado armazenado na fila de prioridade.
+  *
+ * @note A complexidade temporal das operações são as seguintes:
+  * - `insert`: O(log n) onde n é o número de elementos na fila.
+  * - `extractMin`: O(log n) onde n é o número de elementos na fila.
+  * - `decreaseKey`: O(log n) onde n é o número de elementos na fila.
+  */
 template <class T>
 class MutablePriorityQueue {
     std::vector<T *> H;
+
+    /**
+      * @brief Reorganiza a heap para cima, a partir do índice fornecido.
+      *
+      * @param i O índice do elemento a ser reorganizado.
+      *
+      * @note A complexidade temporal é O(log n) onde n é o número de elementos na fila.
+      */
     void heapifyUp(unsigned i);
+
+    /**
+      * @brief Reorganiza a heap para baixo, a partir do índice fornecido.
+      *
+      * @param i O índice do elemento a ser reorganizado.
+      *
+      * @note A complexidade temporal é O(log n) onde n é o número de elementos na fila.
+      */
     void heapifyDown(unsigned i);
+
+    /**
+      * @brief Atualiza o índice de um elemento na heap.
+      *
+      * @param i O índice do elemento.
+      * @param x O ponteiro para o elemento.
+      */
     inline void set(unsigned i, T * x);
 public:
+    /**
+      * @brief Constrói uma nova fila de prioridade vazia.
+      */
     MutablePriorityQueue();
+
+    /**
+      * @brief Insere um elemento na fila de prioridade.
+      *
+      * @param x O ponteiro para o elemento a ser inserido.
+      *
+      * @note A complexidade temporal é O(log n) onde n é o número de elementos na fila.
+      */
     void insert(T * x);
+
+    /**
+      * @brief Extrai o elemento com a menor chave da fila de prioridade.
+      *
+      * @return O ponteiro para o elemento extraído.
+      *
+      * @note A complexidade temporal é O(log n) onde n é o número de elementos na fila.
+      */
     T * extractMin();
+
+    /**
+      * @brief Diminui a chave de um elemento na fila de prioridade.
+      *
+      * @param x O ponteiro para o elemento a ter a chave diminuída.
+      *
+      * @note A complexidade temporal é O(log n) onde n é o número de elementos na fila.
+      */
     void decreaseKey(T * x);
+
+    /**
+      * @brief Verifica se a fila de prioridade está vazia.
+      *
+      * @return Retorna verdadeiro se a fila estiver vazia, falso caso contrário.
+      */
     bool empty();
 };
 
