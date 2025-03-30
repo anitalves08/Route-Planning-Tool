@@ -71,6 +71,28 @@ vector<pair<int,int>> shortestPathWalking(Graph<Location> *graph, const int &des
  */
 void bestPath(Graph<Location> *graph, vector<pair<int,int>> res, int &min_time, int &index_park);
 
+/**
+ * @brief Busca as alternativas de caminho para pedestres com base no tempo máximo de caminhada.
+ *
+ * Este algoritmo usa o algoritmo de Dijkstra para encontrar alternativas de caminhos a pé até pontos de estacionamento
+ * dentro de um limite de tempo de caminhada especificado. Se o caminho a pé até o ponto de estacionamento ultrapassar
+ * o tempo máximo de caminhada permitido, ele é descartado.
+ *
+ * A função realiza a busca de todas as alternativas possíveis de rotas a pé, considerando a distância até os pontos
+ * de estacionamento, e retorna aquelas que atendem ao critério de tempo máximo de caminhada.
+ *
+ * @param graph O grafo contendo os vértices e as arestas.
+ * @param dest O índice do vértice de destino.
+ * @param source O índice do vértice de origem.
+ * @param max_walking O tempo máximo de caminhada permitido (em unidades de tempo, como minutos).
+ *
+ * @return Um vetor de pares de inteiros, onde cada par representa um nó de estacionamento e o tempo de caminhada
+ *         até ele, dentro do limite do tempo máximo de caminhada permitido.
+ *
+ * @note A complexidade temporal deste algoritmo é O(E log V), onde E é o número de arestas e V é o número de vértices
+ *       no grafo. A complexidade se deve à execução do algoritmo de Dijkstra para calcular os caminhos mais curtos
+ *       e à necessidade de processar cada aresta uma vez durante a busca de alternativas.
+ */
 vector<pair<int,int>> alternativeShortestPathWalking(Graph<Location> *graph, const int &dest, const int &source, const int &max_walking);
 
 #endif //PATHFINDER_H
