@@ -1,3 +1,13 @@
+/**
+* @brief Função principal que carrega o grafo e oferece ao usuário a opção de operar em modo interativo ou em lote.
+ *
+ * Esta função carrega o grafo a partir dos arquivos de dados, e então oferece ao usuário a opção de interagir com o sistema
+ * em modo interativo ou em modo de processamento em lote.
+ *
+ * @note A complexidade temporal depende do modo escolhido:
+ * - Modo interativo: A interação com o usuário é O(1), mas o processamento das rotas pode variar dependendo das funções chamadas.
+ * - Modo em lote: Não implementado, mas seria O(n), onde n é o número de operações a serem processadas.
+ */
 #include <iostream>
 #include <fstream>
 #include <vector>

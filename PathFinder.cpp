@@ -44,19 +44,6 @@ vector<int> getPath(Graph<Location> *graph, const int &source, const int &dest){
     return res;
 }
 
-/**
- * @brief Calcula o caminho mais curto entre um nó de origem e um nó de destino no grafo.
- *
- * Este algoritmo utiliza o algoritmo de Dijkstra, que tem a complexidade temporal de
- * O(E log V), onde E é o número de arestas e V é o número de vértices no grafo.
- * Durante a execução, o grafo é percorrido e os vértices são atualizados com o menor caminho.
- *
- * @param graph O grafo contendo os vértices e as arestas.
- * @param source O índice do nó de origem.
- *
- * @note A complexidade temporal deste algoritmo é O(E log V), onde E é o número de arestas e V é o número de vértices.
- */
-
 void shortestPath(Graph<Location> *graph, const int &source) {
     MutablePriorityQueue<Vertex<Location>> q;
     for (Vertex<Location> *v : graph->getVertexSet()) {
