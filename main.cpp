@@ -206,47 +206,127 @@ int main() {
         selectedEdges(&graph,edges);
       }
       //vetor com os possíveis nodulos de parking (id,walking_time)
-
+      //se o vetor for empty significa que das duas uma:
+      //ou não existiam parking nodes,
+      //ou existiam mas o tempo de caminhada mais curto até ao destino excedia o max_walking_time
       vector<pair<int,int>> res = shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
+
       if (res.empty()) {
-        cout << "Driving Route: None" << endl;
-        cout << "Parking Node: None" << endl;
-        cout << "Walking Node: None" << endl;
-        cout << "Total Time:" << endl;
-        cout << "Message: there are no parking nodes whose walking time is less or equal than " << max_walking << endl;
-        continue;
-      }
-      int min_time = INT_MAX,id_park,time_walking;
-      shortestPath(&graph,stoi(source));
-      for (int i=0;i<res.size();i++) {
-        int total_time = res[i].second + graph.getVertexSet()[res[i].first-1]->getDist();
-        if (min_time > total_time) {
-          min_time = total_time;
-          id_park = res[i].first;
-          time_walking = res[i].second;
+        int min_time1 = INT_MAX, min_time2=INT_MAX;
+        int id_park1, id_park2, index_park1, index_park2, walking_time1=-1;
+
+        cout << "No suitable route was found! 2 alternative routes that approximate your requirements:" << endl;
+
+        while (res.empty()) {
+          max_walking++;
+          res=shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
         }
-        else if (min_time ==total_time) {
-          if (time_walking < res[i].second) {
-            id_park = res[i].first;
-            time_walking = res[i].second;
-          }
+        shortestPath(&graph,stoi(source));
+
+
+        bestPath(&graph,res,min_time1,index_park1,-1);
+
+        id_park1=res[index_park1].first;
+        walking_time1=res[index_park1].second;
+
+        vector<int> driving_route1 = getPath(&graph, stoi(source), id_park1);
+
+
+        //Buscar a segunda melhor opção
+        max_walking++;
+        res = shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
+        cout<< res.size() << endl;
+        while (res.empty()) {
+          max_walking++;
+          res=shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
         }
+
+        bestPath(&graph,res,min_time2,index_park2,walking_time1);
+        //shortestPath(&graph,stoi(source));
+        id_park2=res[index_park2].first;
+        cout<< id_park2 << endl;
+
+        cout << graph.getVertexSet()[id_park2-1]->getDist() << endl;
+        vector<int> driving_route2 = getPath(&graph, stoi(source), id_park2);
+
+        //teste
+        cout << "tamanho drivingroute " << driving_route2.size() << ",      " << endl;
+        for (int i=driving_route2.size()-2;i>=0;i--) {
+          cout << driving_route2[i] << ", ";
+        }
+        cout << "(" << driving_route2[driving_route2.size()-1] << ")" << endl;
+        //teste
+
+        if (min_time1>min_time2) {
+          swap(min_time1,min_time2);
+          swap(id_park1,id_park2);
+          swap(driving_route1,driving_route2);
+        }
+        //Imprimir rota 1
+        cout << "Driving Route 1: ";
+        for (int i= driving_route1.size()-2;i>=0;i--) {
+          cout << driving_route1[i] << ", ";
+        }
+        cout << "(" << driving_route1[driving_route1.size()-1] << ")" << endl;
+
+        cout << "Parking Node 1: " << id_park1 << endl;
+
+        shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
+        vector<int> walking_route1 = getPath(&graph,stoi(destination),id_park1);
+        cout << "Walking Route 1: ";
+        for (int i=0 ;i <= walking_route1.size()-2;i++) {
+          cout << walking_route1[i] << ", ";
+        }
+        cout << "(" << walking_route1[walking_route1.size()-1] << ")" << endl;
+        cout << "Total Time 1: " << min_time1 << endl;
+        cout << "-----------------------------"<< endl;
+
+        //Imprimir a rota 2
+        cout << "Driving Route 2: ";
+        for (int i= driving_route2.size()-2;i>=0;i--) {
+          cout << driving_route2[i] << ", ";
+        }
+        cout << "(" << driving_route2[driving_route2.size()-1] << ")" << endl;
+
+        cout << "Parking Node 2: " << id_park2 << endl;
+
+        shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
+        vector<int> walking_route2 = getPath(&graph,stoi(destination),id_park2);
+        cout << "Walking Route 2: ";
+        for (int i=0 ;i <= walking_route2.size()-2;i++) {
+          cout << walking_route2[i] << ", ";
+        }
+        cout << "(" << walking_route2[walking_route2.size()-1] << ")" << endl;
+
+        cout << "Total Time 2: " << min_time2 << endl;
+
+
       }
-      vector<int> driving_route = getPath(&graph, stoi(source), id_park);
-      cout << "Driving route: ";
-      for (int i= driving_route.size()-2;i>=0;i--) {
-        cout << driving_route[i] << ", ";
+      else {
+        int min_time = INT_MAX, index_park, id_park;
+        shortestPath(&graph,stoi(source));
+        bestPath(&graph,res,min_time,index_park,-1);
+        id_park=res[index_park].first;
+
+        vector<int> driving_route = getPath(&graph, stoi(source), id_park);
+        cout << "Driving route: ";
+        for (int i= driving_route.size()-2;i>=0;i--) {
+          cout << driving_route[i] << ", ";
+        }
+        cout << "(" << driving_route[driving_route.size()-1] << ")" << endl;
+        cout << "Parking Node: " << id_park << endl;
+        //vai calcular o shortest path relativo ao walking para o nodulo de origem: destination
+        shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
+        vector<int> walking_route = getPath(&graph,stoi(destination),id_park);
+        cout << "Walking route: ";
+        for (int i=0 ;i <= walking_route.size()-2;i++) {
+          cout << walking_route[i] << ", ";
+        }
+        cout << "(" << walking_route[walking_route.size()-1] << ")" << endl;
+        cout << "Total Time: " << min_time << endl;
+
       }
-      cout << "(" << driving_route[driving_route.size()-1] << ")" << endl;
-      cout << "Parking Node: " << id_park << endl;
-      shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
-      vector<int> walking_route = getPath(&graph,stoi(destination),id_park);
-      cout << "Walking route: ";
-      for (int i=0 ;i <= walking_route.size()-2;i++) {
-        cout << walking_route[i] << ", ";
-      }
-      cout << "(" << walking_route[walking_route.size()-1] << ")" << endl;
-      cout << "Total Time: " << min_time << endl;
+
     }
   }
   return 0;

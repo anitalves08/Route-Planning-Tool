@@ -1,0 +1,15 @@
+vector<int> driving_route1 = getPath(&graph, stoi(source), id_park);
+        cout << "Driving Route 1: ";
+        for (int i= driving_route1.size()-2;i>=0;i--) {
+          cout << driving_route1[i] << ", ";
+        }
+        cout << "(" << driving_route1[driving_route1.size()-1] << ")" << endl;
+        cout << "Parking Node 1: " << id_park << endl;
+        shortestPathWalking(&graph,stoi(destination), stoi(source), max_walking);
+        vector<int> walking_route = getPath(&graph,stoi(destination),id_park);
+        cout << "Walking Route 1: ";
+        for (int i=0 ;i <= walking_route.size()-2;i++) {
+          cout << walking_route[i] << ", ";
+        }
+        cout << "(" << walking_route[walking_route.size()-1] << ")" << endl;
+        cout << "Total Time 1: " << min_time << endl;

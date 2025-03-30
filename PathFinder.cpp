@@ -7,10 +7,32 @@ using namespace std;
 #include "Graph.h"
 #include "Location.h"
 
+void bestPath(Graph<Location> *graph, vector<pair<int,int>> res, int &min_time, int &index_park, int walking_time ) {
+    //vetor res (id,walkings)
+    for (int i=0;i<res.size();i++) {
+        if (walking_time!=-1) {
+            if (res[i].second==walking_time) {
+                continue;
+            }
+        }
+        int total_time = res[i].second + graph->getVertexSet()[res[i].first-1]->getDist();
+        if (min_time > total_time) {
+            min_time = total_time;
+            index_park=i;
+        }
+        else if (min_time ==total_time) {
+            if (res[index_park].second < res[i].second) {
+                index_park=i;
+            }
+        }
+    }
+}
+
 vector<int> getPath(Graph<Location> *graph, const int &source, const int &dest){
     vector<int> res;
     Vertex<Location> *d= graph->getVertexSet()[dest-1];
     if (d->getDist()==INT_MAX || d->getPath()==nullptr){
+        cout<< "no Path exists" << endl;
         return res;
     }
     while(d!=nullptr){
@@ -34,8 +56,9 @@ void shortestPath(Graph<Location> *graph, const int &source) {
         v->setPath(nullptr);
         v->setVisited(false);
     }
-
+    cout<< "origem" << source<<endl;
     Vertex<Location> *s = graph->getVertexSet()[source-1];
+
     //define o ponto de partida source com distancia 0
     s->setDist(0);
     s->setVisited(true);
@@ -71,6 +94,7 @@ vector<pair<int,int>> shortestPathWalking(Graph<Location> *graph, const int &des
     d->setDist(0);
     q.insert(d);
     vector<pair<int,int>> parking_nodes;
+    vector<pair<int,int>> all_parking_nodes;
     d->setVisited(true);
     while (!q.empty()) {
         Vertex<Location> *u = q.extractMin();

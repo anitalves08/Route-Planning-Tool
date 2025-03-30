@@ -14,4 +14,6 @@ void shortestPath(Graph<Location> *graph, const int &source);
 
 vector<pair<int,int>> shortestPathWalking(Graph<Location> *graph, const int &dest, const int &source, const int &max_walking);
 
+void bestPath(Graph<Location> *graph, vector<pair<int,int>> res, int &min_time, int &index_park, int walking_time);
+
 #endif //PATHFINDER_H
